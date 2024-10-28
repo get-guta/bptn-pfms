@@ -1,16 +1,30 @@
 package com.bptn.pfms._services;
 
-import java.util.Date;
 
-//Income class
 public class Income extends Transaction {
- private String source;
+    private String source;
 
- public Income(double amount, String date, String description, String source) {
-     super(amount, date, description);
-     this.source = source;
- }
+    public Income(double amount, String date, String description, String source) {
+        super(amount, date, description); // Initialize common fields from Transaction
+        this.source = source; // Initialize specific field for Income
+    }
 
- public String getSource() { return source; }
- public void setSource(String source) { this.source = source; }
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    @Override
+    public String toString() {
+        return "Income{" +
+                "amount=" + getAmount() +
+                ", date='" + getDate() + '\'' +
+                ", description='" + getDescription() + '\'' +
+                ", source='" + source + '\'' +
+                '}';
+    }
 }
+

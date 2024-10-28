@@ -9,10 +9,6 @@ public class Main {
 		ConsoleUI console = new ConsoleUI(financeManager);
 		console.userChoiceHandler();
 		
-		
-		
-		
-		
 	}
 
 }

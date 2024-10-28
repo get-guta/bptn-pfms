@@ -6,8 +6,6 @@ public class ConsoleUI {
 	
 	private final FinanceManager financeManager;
 	 
-    
-
    
     public ConsoleUI(FinanceManager financeManager) {
         this.financeManager = financeManager;
@@ -26,10 +24,10 @@ public class ConsoleUI {
                 	financeManager.expenseHandler();
                     break;
                 case 2:
-                	financeManager.budgetPlanner();
+                	financeManager.incomeHandler();
                     break;
                 case 3:
-                	financeManager.trackSavingsGoal();
+                	financeManager.budgetPlanner();
                     break;
                 case 4:
                 	financeManager.generateFinancialReport();
@@ -47,8 +45,8 @@ public class ConsoleUI {
     private void displayMainMenu() {
         System.out.println("\n===== Personal Finance Management System =====");
         System.out.println("1. Add an expense");
-        System.out.println("2. Set a budget");
-        System.out.println("3. Track savings goal");
+        System.out.println("2. Add Income");
+        System.out.println("3. Set a budget");
         System.out.println("4. Generate financial report");
         System.out.println("5. Exit");
         System.out.print("Enter your choice (1-5): ");

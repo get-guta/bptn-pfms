@@ -19,17 +19,19 @@ public class ExpenseTracker {
 	public List<Transaction> getAllTransactions() {
 		return new ArrayList<>(transactions); // Return a copy to preserve encapsulation
 	}
-
+	
 	public List<Transaction> getTransactionsByMonth(String month, String year) {
-		List<Transaction> monthlyTransactions = new ArrayList<>();
-		for (Transaction t : transactions) {
-			String[] dateParts = t.getDate().split("/");
-			if (dateParts.length == 3 && dateParts[0].equals(month) && dateParts[2].equals(year)) {
-				monthlyTransactions.add(t);
-			}
-		}
-		return monthlyTransactions;
+	    List<Transaction> monthlyTransactions = new ArrayList<>();
+
+	    for (Transaction t : transactions) {
+	        String[] dateParts = t.getDate().split("/");
+	        if (dateParts.length == 3 && dateParts[1].equals(month) && dateParts[2].equals(year)) {
+	            monthlyTransactions.add(t);
+	        }
+	    }
+	    return monthlyTransactions;
 	}
+
 
 	public List<Transaction> getTransactionsByYear(String year) {
 		List<Transaction> yearlyTransactions = new ArrayList<>();

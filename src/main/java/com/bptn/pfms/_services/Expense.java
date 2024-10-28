@@ -1,8 +1,5 @@
 package com.bptn.pfms._services;
 
-import java.util.Date;
-
-//Expense class
 public class Expense extends Transaction {
  private String category;
 
@@ -11,6 +8,10 @@ public class Expense extends Transaction {
      this.category = category;
  }
 
- public String getCategory() { return category; }
- public void setCategory(String category) { this.category = category; }
+ public String getCategory() { 
+	 return category;
+	 }
+ public void setCategory(String category) { 
+	 this.category = category;
+	 }
 }
