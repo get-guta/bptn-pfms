@@ -16,15 +16,18 @@ public class Income extends Transaction {
     public void setSource(String source) {
         this.source = source;
     }
+    
+    // I was thinking to test print the data of instance income
+   
 
-    @Override
-    public String toString() {
-        return "Income{" +
-                "amount=" + getAmount() +
-                ", date='" + getDate() + '\'' +
-                ", description='" + getDescription() + '\'' +
-                ", source='" + source + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Income{" +
+//                "amount=" + getAmount() +
+//                ", date='" + getDate() + '\'' +
+//                ", description='" + getDescription() + '\'' +
+//                ", source='" + source + '\'' +
+//                '}';
+//    }
 }
 

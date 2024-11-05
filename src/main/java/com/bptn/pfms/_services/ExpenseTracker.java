@@ -3,6 +3,7 @@ package com.bptn.pfms._services;
 import java.util.ArrayList;
 import java.util.List;
 
+// It would be good if the name was transaction manager 
 public class ExpenseTracker {
 
 	private ArrayList<Transaction> transactions;
@@ -33,6 +34,7 @@ public class ExpenseTracker {
 	}
 
 
+// not used in the functionality
 	public List<Transaction> getTransactionsByYear(String year) {
 		List<Transaction> yearlyTransactions = new ArrayList<>();
 		for (Transaction t : transactions) {

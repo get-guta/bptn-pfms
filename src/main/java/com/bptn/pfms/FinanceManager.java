@@ -36,8 +36,16 @@ public class FinanceManager {
 			System.out.print("Enter Category: ");
 			String category = scanner.nextLine().trim();
 
-			System.out.print("Enter Amount: ");
-			double amount = Double.parseDouble(scanner.nextLine());
+			double amount = 0.0;
+			// try should surround the amount part
+			try {
+				System.out.print(" Enter Amount: ");
+				amount = Double.parseDouble(scanner.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("Error: Please enter a valid number for amount.");
+				System.out.print("Re-enter Amount: ");
+				amount = Double.parseDouble(scanner.nextLine());
+			}
 
 			System.out.print("Enter Date (DD/MM/YYYY): ");
 			String date = scanner.nextLine().trim();
@@ -48,38 +56,42 @@ public class FinanceManager {
 			addExpense(category, amount, date, description);
 			System.out.println("*** Transaction record successfully saved as Expense! ***");
 
-		} catch (NumberFormatException e) {
-			System.out.println("Error: Please enter a valid number for amount.");
 		} catch (Exception e) {
 			System.out.println("Error processing expense: " + e.getMessage());
 		}
 	}
+
 	public void incomeHandler() {
-        try {
-            System.out.println("\n\nPlease Enter Your New Income Details:\n");
-            System.out.println("***************************************\n");
+		try {
+			System.out.println("\n\n Please Enter Your New Income Details:\n");
+			System.out.println("***************************************\n");
 
-            System.out.print("Enter Source: ");
-            String source = scanner.nextLine().trim();
+			System.out.print("Enter Source: ");
+			String source = scanner.nextLine().trim();
 
-            System.out.print("Enter Amount: ");
-            double amount = Double.parseDouble(scanner.nextLine().trim());
+			double amount = 0.0;
+			try {
+				System.out.print("Enter Amount: ");
+				amount = Double.parseDouble(scanner.nextLine().trim());
+			} catch (NumberFormatException e) {
+				System.out.println("Error: Please enter a valid number for amount.");
+				System.out.print("Re-enter Amount: ");
+				amount = Double.parseDouble(scanner.nextLine().trim());
+			}
 
-            System.out.print("Enter Date (DD/MM/YYYY): ");
-            String date = scanner.nextLine().trim();
+			System.out.print("Enter Date (DD/MM/YYYY): ");
+			String date = scanner.nextLine().trim();
 
-            System.out.print("Enter Description: ");
-            String description = scanner.nextLine().trim();
+			System.out.print("Enter Description: ");
+			String description = scanner.nextLine().trim();
 
-            addIncome(source, amount, date, description);
-            System.out.println("*** Transaction record successfully saved as Income! ***");
+			addIncome(source, amount, date, description);
+			System.out.println("*** Transaction record successfully saved as Income! ***");
 
-        } catch (NumberFormatException e) {
-            System.out.println("Error: Please enter a valid number for amount.");
-        } catch (Exception e) {
-            System.out.println("Error processing income: " + e.getMessage());
-        }
-    }
+		}  catch (Exception e) {
+			System.out.println("Error processing income: " + e.getMessage());
+		}
+	}
 
 	public void budgetPlanner() {
 		try {
@@ -87,18 +99,23 @@ public class FinanceManager {
 			System.out.println("***************************************\n");
 
 			System.out.print("Enter Category: ");
-			String category = scanner.nextLine().trim();
+			String category = scanner.nextLine().trim().toLowerCase();
 
-			System.out.print("Enter Budget Amount: ");
-			double amount = Double.parseDouble(scanner.nextLine());
+			double amount = 0.0;
+			try {
+				System.out.print("Enter Budget Amount: ");
+				amount = Double.parseDouble(scanner.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("Error: Please enter a valid number for budget amount.");
+				System.out.print("Re-enter Budget Amount: ");
+				amount = Double.parseDouble(scanner.nextLine());
+			}
 
 			Budget budget = new Budget(category, amount);
 			budgetManager.setBudget(budget);
 			System.out.println("*** Budget successfully set! ***");
 
-		} catch (NumberFormatException e) {
-			System.out.println("Error: Please enter a valid number for budget amount.");
-		} catch (Exception e) {
+		}  catch (Exception e) {
 			System.out.println("Error setting budget: " + e.getMessage());
 		}
 	}
@@ -116,32 +133,39 @@ public class FinanceManager {
 
 			// Check if there are any entries in the trackers
 			if (!hasExpenses() && !hasBudgets()) {
+		
 				System.out
 						.println("No expenses or budget entries found. Please add data before generating the report.");
 				return; // Stop the method if no data is found
 			}
 			System.out.println("\n----- Generate Monthly Financial Report -----");
+
 			
 			String month;
-	        while (true) {
-	            System.out.print("Enter month (1-12): ");
-	            month = scanner.nextLine().trim();
+			while (true) {
+				System.out.print("Enter month (1-12): ");
+				month = scanner.nextLine().trim();
 
-	            // Check if the month is a valid integer within the range
-	            try {
-	                int monthInt = Integer.parseInt(month);
-	                if (monthInt >= 1 && monthInt <= 12) {
-	                    break; // Valid month, exit the loop
-	                } else {
-	                    System.out.println("Invalid month. Please enter a number between 1 and 12.");
-	                }
-	            } catch (NumberFormatException e) {
-	                System.out.println("Invalid input. Please enter a numeric value for the month.");
-	            }
-	        }
+				// Check if the month is a valid integer within the range
+				try {
+					int monthInt = Integer.parseInt(month);
+					if (monthInt >= 1 && monthInt <= 12) {
+						break; // Valid month, exit the loop
+					} else {
+						System.out.println("Invalid month. Please enter a number between 1 and 12.");
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid input. Please enter a numeric value for the month.");
+				}
+			}
 
 			System.out.print("Enter year (YYYY): ");
 			String year = scanner.nextLine().trim();
+			try {
+			    reportGenerator.generateMonthlyReport("13", "2024"); // Invalid month
+			} catch (InvalidDateFormatException e) {
+			    System.out.println(e.getMessage()); // This should print "Month must be between 1 and 12"
+			}
 
 			String report = reportGenerator.generateMonthlyReport(month, year);
 
@@ -174,15 +198,29 @@ public class FinanceManager {
 		} catch (IOException e) {
 			System.out.println("Error saving report: " + e.getMessage());
 		}
+		
+		/*
+		 
+		 // Write the built report to the file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            writer.write(report); 
+            System.out.println("Report saved to " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error saving report: " + e.getMessage());
+        }
+		 
+		 */
+		
 	}
 
 	private void addExpense(String category, double amount, String date, String description) {
 		Expense expense = new Expense(amount, date, description, category);
 		expenseTracker.addTransaction(expense);
 	}
-	 private void addIncome(String source, double amount, String date, String description) {
-	        Income income = new Income(amount, date, description, source);
-	        expenseTracker.addTransaction(income);
-	    }
+
+	private void addIncome(String source, double amount, String date, String description) {
+		Income income = new Income(amount, date, description, source);
+		expenseTracker.addTransaction(income);
+	}
 
 }

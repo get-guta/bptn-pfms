@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.bptn.pfms._services.ReportOverBudgetTest" time="0.124" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.bptn.pfms._services.ReportOverBudgetTest" time="0.086" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ET"/>
     <property name="sun.boot.library.path" value="/Users/faf/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.macosx.x86_64_23.0.0.v20240919-1706/jre/lib"/>
-    <property name="sun.java.command" value="/Users/faf/workspace-pfms/bptn-pfms/target/surefire/surefirebooter-20241027171541223_3.jar /Users/faf/workspace-pfms/bptn-pfms/target/surefire 2024-10-27T17-15-40_946-jvmRun1 surefire-20241027171541223_1tmp surefire_0-20241027171541223_2tmp"/>
+    <property name="sun.java.command" value="/Users/faf/workspace-pfms/bptn-pfms/target/surefire/surefirebooter-20241105132826901_3.jar /Users/faf/workspace-pfms/bptn-pfms/target/surefire 2024-11-05T13-28-26_760-jvmRun1 surefire-20241105132826901_1tmp surefire_0-20241105132826901_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/faf/workspace-pfms/bptn-pfms/target/test-classes:/Users/faf/workspace-pfms/bptn-pfms/target/classes:/Users/faf/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar:/Users/faf/.m2/repository/org/junit/platform/junit-platform-engine/1.8.1/junit-platform-engine-1.8.1.jar:/Users/faf/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/faf/.m2/repository/org/junit/platform/junit-platform-commons/1.8.1/junit-platform-commons-1.8.1.jar:/Users/faf/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar:/Users/faf/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/faf/workspace-pfms/bptn-pfms/target/surefire/surefirebooter-20241027171541223_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/faf/workspace-pfms/bptn-pfms/target/surefire/surefirebooter-20241105132826901_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23+37"/>
@@ -59,25 +59,37 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testOverBudgetStatusInReport" classname="com.bptn.pfms._services.ReportOverBudgetTest" time="0.101">
+  <testcase name="testOverBudgetStatusInReport" classname="com.bptn.pfms._services.ReportOverBudgetTest" time="0.072">
     <system-out><![CDATA[Transactions stored in ExpenseTracker:
  - 01/10/2024: 350.0 (Movie)
+ - 01/10/2024: 1000.0 (Salary)
 Transactions retrieved for month 10/2024:
  - 01/10/2024: 350.0 (Movie)
+ - 01/10/2024: 1000.0 (Salary)
 Generated Report:
 ******************************************************************************************************
 *                                       Monthly Financial Report                                      *
 ******************************************************************************************************
 Report Period: 10/2024
 
+Income Sources:
+| No. | Source               | Amount     |
+---------------------------------------------------------
+| 1   | Work                 | $1000.00   |
+---------------------------------------------------------
+Total Income: $1000.00
+
+Expenses by Category:
 | No. | Category        | Expenses   | Budget     | Status   |
 -----------------------------------------------------------------------------------------------------------------------
 | 1   | Entertainment   | $350.00    | $300.00    | Exceed   |
 -----------------------------------------------------------------------------------------------------------------------
 Total Expenses: $350.00
 Total Budget: $300.00
-Monthly Balance: $-50.00
+Monthly Balance (Income - Expenses): $650.00
 
+
+Overall Financial Health Status: Concerning
 ]]></system-out>
   </testcase>
 </testsuite>

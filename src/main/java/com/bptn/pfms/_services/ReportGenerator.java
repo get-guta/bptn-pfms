@@ -41,6 +41,8 @@ public class ReportGenerator {
         for (Transaction t : monthlyTransactions) {
             if (t instanceof Expense) {
                 Expense expense = (Expense) t;
+                // lambda way of writing 
+                //categoryExpenses.merge(expense.getCategory(), expense.getAmount(), (existingAmount, newAmount) -> existingAmount + newAmount);
                 categoryExpenses.merge(expense.getCategory(), expense.getAmount(), Double::sum);
                 totalExpenses += expense.getAmount();
             } else if (t instanceof Income) {
